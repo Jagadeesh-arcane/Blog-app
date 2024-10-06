@@ -3,7 +3,7 @@
 import { GraphQLClient, gql } from 'graphql-request';
 
 const DATOCMS_API_ENDPOINT = 'https://graphql.datocms.com/';
-const API_TOKEN = '2081f445fe9651aa784d20bbb173f8'; // Replace this with your actual token
+const API_TOKEN = process.env.NEXT_PUBLIC_DATOCMS_API_TOKEN; // Replace this with your actual token
 
 // GraphQL query to fetch blog posts
 const BLOG_POSTS_QUERY = gql`

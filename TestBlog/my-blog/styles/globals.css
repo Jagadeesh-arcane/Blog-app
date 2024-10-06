@@ -8,9 +8,9 @@ body {
   margin: 0;
   padding: 0;
   background-color: #c7eae5;
-  background-image: url('/images/back.jpg'); 
+  background-image: url('/images/back.jpg');
   background-repeat: no-repeat;
-  background-size: cover; 
+  background-size: cover;
   background-position: center;
   background-attachment: fixed; 
 }
