@@ -16,10 +16,10 @@ const Blogs = () => {
     }, []);
 
     return (
-        <div className="max-w-7xl mx-auto p-6">
-            <h1 className="text-center text-4xl font-bold mb-10 bg-gradient-to-r from-purple-400 to-pink-600 bg-clip-text text-transparent">
+        <div className="max-w-7xl mx-auto py-12 px-6">
+            <h2 className="text-center text-4xl font-bold mb-10 bg-gradient-to-r from-purple-400 to-pink-600 bg-clip-text text-transparent">
                 Explore Our Blogs
-            </h1>
+            </h2>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {blogs.map((post, index) => (
