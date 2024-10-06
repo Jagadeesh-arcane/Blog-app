@@ -1,3 +1,5 @@
+// pages/data/fetcher.tsx
+
 import { GraphQLClient, gql } from 'graphql-request';
 
 const DATOCMS_API_ENDPOINT = 'https://graphql.datocms.com/';
@@ -16,10 +18,19 @@ const BLOG_POSTS_QUERY = gql`
     content
     quote
     slug
+    types {
+      id
+      name
+      image {
+        url
+      }
+      category
+      content
+      slug
+    }
   }
 }
 `;
-
 
 export async function fetchBlogs() {
 
@@ -36,11 +47,19 @@ export async function fetchBlogs() {
     return data.allBlogPosts.map((blog: any) => ({
       id: blog.id,
       title: blog.title,
-      imageUrl: blog.image.url,
+      imageUrl: blog.image?.url || '',
       description: blog.description,
       content: blog.content,
       quote: blog.quote,
       slug: blog.slug,
+      types: blog.types.map((type: any) => ({
+        id: type.id,
+        name: type.name,
+        imageUrl: type.image?.url || '', // Handle possible null for image
+        category: type.category,
+        content: type.content,
+        slug: type.slug,
+      })),
     }));
   } catch (error) {
     console.error('Error fetching blog posts:', error);

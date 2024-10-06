@@ -1,9 +1,9 @@
+// pages/index.tsx
+
 import { useEffect, useState } from 'react';
 
-import Image from 'next/image';
 import Link from 'next/link';
 import { fetchBlogs } from '../pages/data/fetcher';
-// import { blogs } from '../pages/data/data';
 
 export default function Home() {
   const [blogs, setBlogs] = useState<any[]>([]);
@@ -15,21 +15,28 @@ export default function Home() {
   }, []);
 
   return (
-    <div>
-      <h1 className="bg-gradient-to-r from-purple-400 to-pink-600 text-white text-4xl font-bold py-4 px-6 rounded-lg shadow-lg" >
-        Welcome to My Blog
-      </h1>
-      <ul className="flex flex-col items-center space-y-3 mt-10 space-y-6">
-        {blogs.map((post, index) => (
-          <li key={post.id}>
-            <Link href={`/blog/${post.slug}`}>
-            <div className="bg-white text-blue-600 font-semibold text-2xl py-3 px-6 rounded-full shadow-md transition transform hover:scale-105 hover:shadow-lg">
-              {post.title}
-            </div>
+    <div className="bg-transparent min-h-screen text-white">
+      <section className="py-12 px-6">
+        <h2 className="text-center text-4xl font-bold mb-10 bg-gradient-to-r from-purple-400 to-pink-600 bg-clip-text text-transparent">
+          Explore Our Latest Posts
+        </h2>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-20">
+          {blogs.map((post) => (
+            <Link key={post.id} href={`/blog/${post.slug}`}>
+              <div className="group bg-gray-900 p-6 rounded-lg shadow-lg hover:shadow-2xl transition transform hover:-translate-y-2">
+                <h3 className="text-2xl font-bold text-white group-hover:text-pink-500 transition">
+                  {post.title}
+                </h3>
+                <div className="mt-2 h-1 w-12 bg-gradient-to-r from-purple-400 to-pink-600 rounded-full transition-transform transform group-hover:scale-125"></div>
+                <p className="mt-4 text-gray-400 group-hover:text-white transition">
+                  Click to read more about this post!
+                </p>
+              </div>
             </Link>
-          </li>
-        ))}
-      </ul>
+          ))}
+        </div>
+      </section>
     </div>
   );
 }
