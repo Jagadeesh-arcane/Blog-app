@@ -34,8 +34,8 @@ const Header = () => {
         </div>
 
         <span className="hidden md:block">
-          <Link href="/contact" className="text-lg font-semibold">
-            <span className="text-white hover:text-blue-500">Contact</span>
+          <Link href="/chart" className="text-lg font-semibold">
+            <span className="text-white hover:text-blue-500">Chart</span>
           </Link>
         </span>
       </nav>
@@ -51,8 +51,8 @@ const Header = () => {
         <Link href="/search" className="text-lg font-semibold">
           Search
         </Link>
-        <Link href="/contact" className="text-lg font-semibold">
-          Contact
+        <Link href="/chart" className="text-lg font-semibold">
+          Chart
         </Link>
       </div>
     </header>
