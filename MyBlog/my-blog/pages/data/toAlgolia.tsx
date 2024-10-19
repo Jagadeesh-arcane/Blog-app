@@ -14,17 +14,15 @@ const uploadToAlgolia = async () => {
   try {
     const blogs = await fetchBlogs();
 
-    const records = blogs.map((blog: any) => ({
-      objectID: blog.id,
-      title: blog.title,
-      slug: blog.slug,
-      types: blog.types.map((type: any) => ({
-        objectID: type.id,
-        name: type.name,
-        category: type.category,
-        slug: type.slug,
-      })),
-    }));
+    const records = blogs.flatMap((blog: any) =>
+      blog.types.map((type: any) => ({
+        objectID: `${blog.id}_${type.id}`, 
+        title: type.name, 
+        slug: type.slug, 
+        category: blog.title, 
+        content: type.content,
+      }))
+    );
 
     await index.saveObjects(records);
     console.log('Data uploaded to Algolia successfully');
