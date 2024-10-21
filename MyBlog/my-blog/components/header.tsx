@@ -33,11 +33,18 @@ const Header = () => {
           </Link>
         </div>
 
-        <span className="hidden md:block">
-          <Link href="/chart" className="text-lg font-semibold">
-            <span className="text-white hover:text-blue-500">Chart</span>
-          </Link>
-        </span>
+        <div className="hidden md:flex justify-center items-center space-x-6">
+          <span className="hidden md:block">
+            <Link href="/chart" className="text-lg font-semibold">
+              <span className="text-white hover:text-blue-500">Chart</span>
+            </Link>
+          </span>
+          <span className="hidden md:block">
+            <Link href="/contact" className="text-lg font-semibold">
+              <span className="text-white hover:text-blue-500">Contact</span>
+            </Link>
+          </span>
+        </div>
       </nav>
 
       {/* Mobile Menu */}
