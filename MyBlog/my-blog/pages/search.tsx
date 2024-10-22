@@ -2,6 +2,7 @@
 
 import { Hits, InstantSearch, SearchBox } from 'react-instantsearch-dom';
 
+import { Algolia } from '../types/type';
 import Image from "next/legacy/image";
 import algoliasearch from 'algoliasearch/lite';
 import { useRouter } from 'next/router';
@@ -13,7 +14,7 @@ const searchClient = algoliasearch(
 );
 
 // Component to display individual search result
-const HitComponent = ({ hit }: { hit: any }) => {
+const HitComponent = ({ hit }: { hit: Algolia }) => {
   const router = useRouter();
 
   const handleClick = () => {
@@ -38,7 +39,7 @@ const SearchPage = () => {
   // Function to handle search and redirect to the first blog page
   const handleSearch = async () => {
     const index = searchClient.initIndex('Blog_post');
-    const { hits } = await index.search(searchQuery);
+    const { hits } = await index.search<Algolia>(searchQuery);
     if (hits.length > 0) {
       router.push(`/blogs/${hits[0].category.toLowerCase()}/${hits[0].slug}`);    // Redirect to the first hit
     } else {
@@ -59,12 +60,6 @@ const SearchPage = () => {
               onChange={(e) => setSearchQuery(e.currentTarget.value)}
               translations={{ placeholder: 'Search for posts...', }}
               className="flex-1 w-full sm:w-3/4 p-3 pr-3 border-4 border-gray-600 rounded-lg focus:outline-none focus:ring-4 focus:ring-red-500 transition-transform transform hover:scale-105"
-              submit={false}
-              reset={false}
-              onKeyPress={(e) => {
-                if (e.key === 'Enter') {
-                  handleSearch();       // Redirect on Enter key
-              }}}
             />
             <button
               type="button" 

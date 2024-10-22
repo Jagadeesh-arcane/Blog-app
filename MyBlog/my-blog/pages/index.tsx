@@ -2,11 +2,12 @@
 
 import { useEffect, useState } from 'react';
 
+import { Blog } from '../types/type';
 import Link from 'next/link';
-import { fetchBlogs } from '../pages/data/fetcher';
+import { fetchBlogs } from '../data/fetcher';
 
 export default function Home() {
-  const [blogs, setBlogs] = useState<any[]>([]);
+  const [blogs, setBlogs] = useState<Blog[]>([]);
 
   useEffect(() => {
     fetchBlogs().then(data => {

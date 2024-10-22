@@ -1,6 +1,23 @@
 import Link from 'next/link';
 import { useEffect } from 'react';
 
+declare global {
+  interface Window {
+      hbspt: {
+          forms: {
+              create: (options: {
+                  portalId: string | undefined;
+                  formId: string | undefined;
+                  target: string;
+                  css: string;
+                  onFormReady: () => void;
+              }) => void;
+          };
+      };
+  }
+}
+
+
 const HubSpotForm = () => {
   useEffect(() => {
     const portalID = process.env.NEXT_PUBLIC_HUBSPOT_FORM_PORTAL_ID;
@@ -12,8 +29,8 @@ const HubSpotForm = () => {
     document.body.appendChild(script);
 
     script.onload = () => {
-      if ((window as any).hbspt) {
-        (window as any).hbspt.forms.create({
+      if (window.hbspt) {
+        window.hbspt.forms.create({
           portalId: portalID,
           formId: formID,
           target: '#hubspotForm',

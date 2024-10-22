@@ -2,12 +2,13 @@
 
 import { useEffect, useState } from 'react';
 
+import { Blog } from '../../types/type';
 import Image from "next/legacy/image";
 import Link from 'next/link';
-import { fetchBlogs } from '../data/fetcher';
+import { fetchBlogs } from '../../data/fetcher';
 
 const Blogs = () => {
-    const [blogs, setBlogs] = useState<any[]>([]);
+    const [blogs, setBlogs] = useState<Blog[]>([]);
 
     useEffect(() => {
         fetchBlogs().then(data => {
@@ -39,7 +40,7 @@ const Blogs = () => {
                             </h2>
                             <p className="text-gray-500 mb-4">{post.description}</p>
                             <blockquote className="italic text-gray-200 mb-4 border-l-4 border-yellow-400 pl-4">
-                                "{post.quote}"
+                                &ldquo;{post.quote}&rdquo;
                             </blockquote>
                             <Link 
                                 href={`/blogs/${post.slug}`} 

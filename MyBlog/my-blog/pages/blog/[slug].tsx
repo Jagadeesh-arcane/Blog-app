@@ -4,7 +4,7 @@ import { GetStaticPaths, GetStaticProps } from 'next';
 
 import Image from "next/legacy/image";
 import Link from 'next/link';
-import { fetchBlogs } from '../../pages/data/fetcher';
+import { fetchBlogs } from '../../data/fetcher';
 
 // import { blogs } from '../../pages/data/data';
 

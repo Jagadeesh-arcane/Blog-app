@@ -1,22 +1,27 @@
 // pages/blogs/[slug]/[typeSlug].tsx
 
+import { Blog, BlogType } from '../../../types/type';
 import { useEffect, useState } from 'react';
 
 import Image from "next/legacy/image";
-import { fetchBlogs } from '../../data/fetcher';
+import { fetchBlogs } from '../../../data/fetcher';
 import { useRouter } from 'next/router';
 
 const TypeDetail = () => {
     const router = useRouter();
     const { slug, typeSlug } = router.query; 
-    const [typeDetail, setTypeDetail] = useState(null);
+    const [typeDetail, setTypeDetail] = useState<BlogType | null>(null);
 
     useEffect(() => {
         if (slug && typeSlug) {
             fetchBlogs().then(data => {
-                const blogCategory = data.find(blog => blog.slug === slug);
-                const foundType = blogCategory.types.find(type => type.slug === typeSlug);
-                setTypeDetail(foundType);
+                const blogCategory = data.find((blog: Blog) => blog.slug === slug);
+                if (blogCategory) {
+                    const foundType = blogCategory.types.find((type: BlogType) => type.slug === typeSlug);
+                    if (foundType) {
+                        setTypeDetail(foundType);
+                    }
+                }
             });
         }
     }, [slug, typeSlug]);

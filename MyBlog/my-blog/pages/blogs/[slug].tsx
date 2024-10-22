@@ -2,20 +2,21 @@
 
 import { useEffect, useState } from 'react';
 
+import { Blog } from '../../types/type';
 import Image from "next/legacy/image";
 import Link from 'next/link';
-import { fetchBlogs } from '../data/fetcher';
+import { fetchBlogs } from '../../data/fetcher';
 import { useRouter } from 'next/router';
 
 const BlogCategory = () => {
     const router = useRouter();
     const { slug } = router.query; 
-    const [blogCategory, setBlogCategory] = useState(null);
+    const [blogCategory, setBlogCategory] = useState<Blog | null>(null);
 
     useEffect(() => {
         if (slug) {
             fetchBlogs().then(data => {
-                const foundCategory = data.find(blog => blog.slug === slug);
+                const foundCategory = data.find(blog => blog.slug === slug) || null;
                 setBlogCategory(foundCategory);
             });
         }
@@ -24,6 +25,7 @@ const BlogCategory = () => {
     if (!blogCategory) {
         return <div className="text-center text-white">Loading...</div>;
     }
+    console.log("data",blogCategory);
 
     return (
         <div className="bg-transparent text-white max-w-7xl mx-auto p-6">

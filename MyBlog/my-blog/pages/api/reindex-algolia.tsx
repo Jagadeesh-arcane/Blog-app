@@ -2,7 +2,7 @@
 
 import { NextApiRequest, NextApiResponse } from 'next';
 
-import uploadToAlgolia from "../data/toAlgolia";
+import uploadToAlgolia from "../../data/toAlgolia";
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method === 'POST') {
