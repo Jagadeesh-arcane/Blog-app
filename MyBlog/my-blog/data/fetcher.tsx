@@ -4,7 +4,7 @@ import { Blog, BlogResponse, BlogType } from '../types/type';
 import { GraphQLClient, gql } from 'graphql-request';
 
 const DATOCMS_API_ENDPOINT = 'https://graphql.datocms.com/';
-const API_TOKEN = process.env.NEXT_PUBLIC_DATOCMS_API_TOKEN; // Replace this with your actual token
+const API_TOKEN = process.env.NEXT_PUBLIC_DATOCMS_API_TOKEN;    // Replace this with your actual token
 
 // GraphQL query to fetch blog posts
 const BLOG_POSTS_QUERY = gql`
@@ -48,7 +48,7 @@ export async function fetchBlogs():Promise<Blog[]> {
     return data.allBlogPosts.map((blog: Blog) => ({
       id: blog.id,
       title: blog.title,
-      imageUrl: blog.image?.url || '',
+      imageUrl: blog.image?.url || '',      // Handle possible null for image
       description: blog.description,
       content: blog.content,
       quote: blog.quote,
@@ -56,7 +56,7 @@ export async function fetchBlogs():Promise<Blog[]> {
       types: blog.types.map((type: BlogType) => ({
         id: type.id,
         name: type.name,
-        imageUrl: type.image?.url || '', // Handle possible null for image
+        imageUrl: type.image?.url || '',    // Handle possible null for image
         category: type.category,
         content: type.content,
         slug: type.slug,

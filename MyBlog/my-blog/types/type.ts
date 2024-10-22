@@ -1,4 +1,4 @@
-// types/blogTypes.ts
+// types/type.ts
 
 export interface Blog {
     id: string;

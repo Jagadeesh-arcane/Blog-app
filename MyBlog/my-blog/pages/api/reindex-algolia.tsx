@@ -1,4 +1,4 @@
-// pages/api/reindex-algolia.ts
+// pages/api/reindex-algolia.tsx
 
 import { NextApiRequest, NextApiResponse } from 'next';
 

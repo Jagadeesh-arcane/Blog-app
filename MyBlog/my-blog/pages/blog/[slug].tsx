@@ -6,20 +6,6 @@ import Image from "next/legacy/image";
 import Link from 'next/link';
 import { fetchBlogs } from '../../data/fetcher';
 
-// import { blogs } from '../../pages/data/data';
-
-// export const getStaticPaths: GetStaticPaths = async () => {
-//   const paths = blogs.map(post => ({
-//     params: { slug: post.slug }
-//   }));
-//   return { paths, fallback: false };
-// };
-
-// export const getStaticProps: GetStaticProps = async ({ params }) => {
-//   const post = blogs.find((post) => post.slug === params?.slug);
-//   return { props: { post } };
-// };
-
 export const getStaticPaths: GetStaticPaths = async () => {
   const blogs = await fetchBlogs(); 
   const paths = blogs.map((post: { slug: string }) => ({
