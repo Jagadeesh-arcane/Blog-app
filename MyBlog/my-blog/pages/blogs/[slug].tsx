@@ -25,7 +25,7 @@ const BlogCategory = () => {
     if (!blogCategory) {
         return <div className="text-center text-white">Loading...</div>;
     }
-    console.log("data",blogCategory);
+    // console.log("data",blogCategory);
 
     return (
         <div className="bg-transparent text-white max-w-7xl mx-auto p-6">
