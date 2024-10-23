@@ -32,7 +32,8 @@ const HitComponent = ({ hit }: { hit: Algolia }) => {
       className="p-3 my-2 bg-gray-800 rounded-lg shadow-md hover:bg-gray-700 transition-colors cursor-pointer transform hover:scale-105"
     >
       <h3 className="text-lg font-semibold text-blue-200">{hit.title}</h3>
-      <p className="text-orange-500 text-sm cursor-pointer hover:underline" onClick={handleCategoryClick}>{hit.category.toLowerCase()}</p>
+      <p className="text-orange-500 text-sm cursor-pointer hover:underline" 
+         onClick={handleCategoryClick} style={{ display: 'inline-block' }}>{hit.category.toLowerCase()}</p>
     </div>
   );
 };
