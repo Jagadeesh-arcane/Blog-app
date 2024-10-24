@@ -23,25 +23,25 @@ const Header = () => {
 
         <div className="hidden md:flex justify-center items-center space-x-6">
           <Link href="/" className="text-lg font-semibold">
-            <span className="text-white hover:text-orange-500">Home</span>
+            <span className="text-pink-600 hover:text-orange-500">Home</span>
           </Link>
           <Link href="/blogs" className="text-lg font-semibold">
-            <span className="text-white hover:text-orange-500">Blogs</span>
+            <span className="text-pink-600 hover:text-orange-500">Blogs</span>
           </Link>
           <Link href="/search" className="text-lg font-semibold">
-            <span className="text-white hover:text-orange-500">Search</span>
+            <span className="text-pink-600 hover:text-orange-500">Search</span>
           </Link>
         </div>
 
         <div className="hidden md:flex justify-center items-center space-x-6">
           <span className="hidden md:block">
             <Link href="/chart" className="text-lg font-semibold">
-              <span className="text-white hover:text-blue-500">Chart</span>
+              <span className="text-pink-600 hover:text-blue-500">Chart</span>
             </Link>
           </span>
           <span className="hidden md:block">
             <Link href="/contact" className="text-lg font-semibold">
-              <span className="text-white hover:text-blue-500">Contact</span>
+              <span className="text-pink-600 hover:text-blue-500">Contact</span>
             </Link>
           </span>
         </div>
